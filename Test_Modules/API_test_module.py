@@ -17,12 +17,12 @@ class UnitTests_StarWarsAPI(unittest.TestCase):
         expected = "Death Star"
         self.assertEqual(actual, expected, 'the death star is built and ready')
 
-    # def test_num_of_pages(self):
-    #     client = pymongo.MongoClient()
-    #     db = client['StarWars']
-    #     json_numbers = self.StarWarsAPI.fetch_num_pages('starships', 4)
-    #     actual =
-    #     expected = db.Starships.count_documents({})
+    def test_num_of_pages(self):
+        client = pymongo.MongoClient()
+        db = client['StarWars']
+        json_numbers = self.StarWarsAPI.fetch_num_pages('starships', 2)
+        actual = len(json_numbers)
+        expected = 20
 
 
 # sw = StarWarsAPI()
@@ -33,3 +33,6 @@ class UnitTests_StarWarsAPI(unittest.TestCase):
 # sw = StarWarsAPI()
 # json_numbers = sw.fetch_num_pages('starships', 4)
 # print(json_numbers.count)
+# sw = StarWarsAPI()
+# json_numbers = sw.fetch_num_pages('starships', 2)
+# print(len(json_numbers))
