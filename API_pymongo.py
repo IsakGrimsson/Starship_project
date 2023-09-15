@@ -82,4 +82,3 @@ class MongoDB:
         data_collection.insert_many(lst)
 
 
-
