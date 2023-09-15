@@ -12,7 +12,7 @@ class StarWarsAPI:
         for page in list(range(1,num_of_pages+1)):
             each_page = self.fetch_page(collection, page)
             all_pages.extend(each_page)
-        return
+        return all_pages
     #fetch all of the pages for specified collection
     def fetch_all_pages(self, collection: str):
         all_pages = []
