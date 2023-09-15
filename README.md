@@ -1,17 +1,59 @@
-# Starship_project description
 
-The data in this database has been pulled from https://swapi.dev/.
+# SWAPI Project
 
-As well as 'people', the API has data on starships. In Python, pull data on all available starships from the API. The "pilots" key contains URLs pointing to the characters who pilot the starship. Use these to replace 'pilots' with a list of ObjectIDs from our characters collection, then insert the starships into their own collection.
+## Description
 
-You should be able to run your application from a main.py module that only contains code to call methods in other parts of the project.
+This project utilises the SWAPI (Star Wars API) to fetch and manipulate Star Wars-related data. This project pulls data on all available starships from the API, and replaces the 'pilots' key URLS with a list of ObjectIDs from the character collection. The starships are then inserted into their own collection.
+
+Other requirements included:
 
 - Work following the **Scrum Framework**
 - Use Trello for **Kanban**
 - Use an appropriate branching strategy
 - Implement **OOP** principles
-- Separate your code into modules which have one job to do
+- Separate code into modules which have one job to do
 - Organise modules into files appropriately
 - **Test** your code with UnitTest and/or PyTest
 - Include a detailed **README.md** describing the project and linking to Kanban board
-- Include a **test report** in your README document
+- Include a **test report** in README document.
+
+## Table of Contents
+
+
+# Useful Links:
+
+[Trello Kanban Board](https://trello.com/b/0IGj6Zvj/starship-project)
+[SWAPI API](https://swapi.dev/)
+
+## Features
+
+- Data retrieval from SWAPI.
+- Data transformation and field conversion.
+- Starship integration with MongoDB for data storage.
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3
+- MongoDB installation
+- UnitTest
+
+### Installation
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/IsakGrimsson/Starship_project.git
+```
+
+
+### Implementation 
+
+
+# Testing Report:
+
+
+# Collaborators:
+
+This project was completed collaboratively by Taslima Hossain, Killian Hughes, Isak Grimsson, Jack Cavanagh, Tommy Ainsworth and Sophie Wilkie
