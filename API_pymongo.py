@@ -30,6 +30,16 @@ class StarWarsAPI:
             page += 1
         return all_pages
 
+    def replace_url(self, list_of_dicts, inner, retrieve):
+        for dict in list_of_dicts:
+            url_replaced_with_retrieve = []
+            for url in dict[inner]:
+                url_json = requests.session().get(url).json()
+                retrieve_element = url_json[retrieve]
+                url_replaced_with_retrieve.append(retrieve_element)
+            dict[inner] = url_replaced_with_retrieve
+        return list_of_dicts
+
 #class which interacts with MongoDB
 class MongoDB:
     def __init__(self):
@@ -39,20 +49,34 @@ class MongoDB:
         client = pymongo.MongoClient(server)
         database = client[db]
         return database
-    def replace_inner_url(self, list_of_dicts, inner):
-        for dict in list_of_dicts:
-            inner_elements = []
-            # For each inner element on each outer element
-            for inn in dict[inner]:
-                # make a request to the API to grab their name
-                inner_name = requests.session().get(inn).json()['name']
-                # Search the DB by name to find their ID and add them to the pilots array
-                inner_element = self.connect_to_mongo('starwars').characters.find({"name": inner_name}, {"_id": 1})
-                for document in inner_element:
-                    inner_elements.append(document["_id"])
-                # Replace the "pilots" field (for each ship)
-            dict["pilots"] = inner_elements
-        return list_of_dicts
+
+    def replace_field(self, database_name,
+                      collection_to_replace, field_to_replace,
+                      collection_to_retrieve, field_to_find, replacement_field="_id"):
+
+        # Establish connections
+        collection_to_replace = self.connect_to_mongo(database_name)[collection_to_replace]
+        collection_to_retrieve = self.connect_to_mongo(database_name)[collection_to_retrieve]
+
+        # Replacement each field, with its replacement
+        # For each document in the collection to replace
+        for document in collection_to_replace.find():
+            # If the field exists
+            if field_to_replace in document:
+                field_to_update = []
+                # For each element in the field to replace
+                for element in document[field_to_replace]:
+                    #Search for a name in the other collection, and return it's replacement
+                    result = collection_to_retrieve.find({field_to_find:element}, {replacement_field:1})
+                    # Grab the replacement field (by default the ID)
+                    for inner_element in result:
+                        field_to_update.append(inner_element[replacement_field])
+                # Set the field to replace, with the replacement field
+                collection_to_replace.update_one({"_id": document["_id"]}, {"$set": {field_to_replace:field_to_update}})
+
+
+
+
     def insert_data(self, lst, database_name, collection_name):
         data_collection = self.connect_to_mongo(database_name)[collection_name]
         data_collection.insert_many(lst)

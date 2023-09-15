@@ -9,7 +9,8 @@ mg = MongoDB()
 starships_data = sw.fetch_all_pages("starships")
 
 
-new_starships_data = mg.replace_inner_url(starships_data, 'pilots')
+new_starships_data = sw.replace_url(starships_data, 'pilots', 'name')
+mg.insert_data(new_starships_data, 'StarWars', 'Starships')
 
-mg.insert_data(new_starships_data, 'StarWars', 'starships')
+mg.replace_field("StarWars",'Starships',"characters","pilots","name")
 
