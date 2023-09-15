@@ -12,6 +12,3 @@ new_starships_data = mg.replace_inner_url(starships_data, 'pilots')
 
 mg.insert_data(new_starships_data, 'starwars', 'starships')
 
-
-
-
