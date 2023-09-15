@@ -34,6 +34,8 @@ class MongoDBAPI:
                 # Set the field to replace, with the replacement field
                 collection_to_replace.update_one({"_id": document["_id"]}, {"$set": {field_to_replace:field_to_update}})
 
-    def insert_data(self, lst, database_name, collection_name):
-        data_collection = self.connect_to_mongo(database_name)[collection_name]
-        data_collection.insert_many(lst)
+    def create_collection(self, database_name, collection_name):
+        return self.connect_to_mongo(database_name)[collection_name]
+
+    def insert_lst_into_db(self, lst, collection):
+        collection.insert_many(lst)
