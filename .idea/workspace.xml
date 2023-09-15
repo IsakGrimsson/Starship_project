@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="89e1043c-5e19-4536-91fd-ae6a5ad27824" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API_pymongo.py" beforeDir="false" afterPath="$PROJECT_DIR$/API_pymongo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StarWars_API.py" beforeDir="false" afterPath="$PROJECT_DIR$/StarWars_API.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test_Modules/API_test_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_Modules/API_test_module.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

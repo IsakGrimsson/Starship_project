@@ -1,11 +1,12 @@
 import unittest
-from API_pymongo import StarWarsAPI
+from StarWars_API import StarWarsAPI
 import pymongo
+import requests
 
 class UnitTests_StarWarsAPI(unittest.TestCase):
     def setUp(self) -> None:
         self.StarWarsAPI = StarWarsAPI()
-    def test_fetch_page(self):
+    def test_fetch_document_length(self):
         json_collection = self.StarWarsAPI.fetch_page('starships', 1)
         actual = len(json_collection[0])
         expected = 18
@@ -20,19 +21,14 @@ class UnitTests_StarWarsAPI(unittest.TestCase):
     def test_num_of_pages(self):
         client = pymongo.MongoClient()
         db = client['StarWars']
-        json_numbers = self.StarWarsAPI.fetch_num_pages('starships', 2)
+        json_numbers = self.StarWarsAPI.fetch_num_pages('starships', 3)
         actual = len(json_numbers)
-        expected = 20
+        expected = 30
+        self.assertEqual(actual, expected, 'The number of documents in each page is correct')
 
-
-# sw = StarWarsAPI()
-# json_collection = sw.fetch_page('starships', 1)
-# print(json_collection[3]['name'])
-# for starship in Starships:
-#     print(starship)
-# sw = StarWarsAPI()
-# json_numbers = sw.fetch_num_pages('starships', 4)
-# print(json_numbers.count)
-# sw = StarWarsAPI()
-# json_numbers = sw.fetch_num_pages('starships', 2)
-# print(len(json_numbers))
+    def test_fetch_all_pages(self):
+        count_request = requests.get("https://swapi.dev/api/starships")
+        expected = count_request.json()["count"]
+        json_collection = self.StarWarsAPI.fetch_all_pages('starships')
+        actual = len(json_collection)
+        self.assertEqual(actual, expected, 'The number of starships is equal to that seen on the API website')
