@@ -27,7 +27,7 @@ class MongoDBAPI:
                 field_to_update = []
                 # For each element in the field to replace
                 for element in document[field_to_replace]:
-                    # Search for a name in the other collection, and return it's replacement
+                    # Search for a name in the other collection, and return its replacement
                     result = collection_to_retrieve.find({field_to_find: element}, {replacement_field: 1})
                     # Grab the replacement field (by default the ID)
                     for inner_element in result:
