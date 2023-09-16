@@ -2,21 +2,14 @@ from MongoDB_API import MongoDBAPI
 
 
 # Transforms numeric string fields to integers.
-def transform_field_to_integer(collection, field_name):
-    # Loop through docs in collection
-    for document in collection.find():
-        # Check if specified field exists in doc
-        if field_name in document:
-            # Get original value of field
-            original_value = document[field_name]
-
+def transform_field_to_integer(data_list, field_name):
+    for item in data_list:
+        if field_name in item:
+            original_value = item[field_name]
             try:
-                # Remove commas and convert into integer
                 new_value = int(str(original_value).replace(',', ''))
-                # Update doc with new int value
-                collection.update_one({"_id": document["_id"]}, {"$set": {field_name: new_value}})
+                item[field_name] = new_value
             except ValueError:
-                # Handle commas and strange things
                 pass
 
 
