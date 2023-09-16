@@ -57,7 +57,7 @@ python main.py
 ```
 
 # Testing Report:
-![](testing_results_1.png)
+![test suite image](/testing_results_1.png)
 
 # Collaborators:
 
