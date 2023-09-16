@@ -36,10 +36,10 @@ Other requirements included:
 
 ### Prerequisites
 
-- Python 3
-- MongoDB installation
-- UnitTest
-- pymongo - `pip install pymongo`
+- Python 3, using your preferred installation method
+- [A working MongoDB installation](https://www.mongodb.com/docs/manual/installation/)
+- UnitTest, which is part of the Python Standard Library
+- [pymongo](https://pymongo.readthedocs.io/en/stable/) - `pip install pymongo`
 
 ### Installation
 
@@ -55,6 +55,7 @@ Once the requirements have been installed, navigate to the base folder of this p
 ```py
 python main.py
 ```
+This will then retrieve and transform the data as specified.
 
 # Testing Report:
 ![test suite image](/test_results_1.png)
