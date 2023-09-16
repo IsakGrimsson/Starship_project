@@ -39,6 +39,7 @@ Other requirements included:
 - Python 3
 - MongoDB installation
 - UnitTest
+- pymongo - `pip install pymongo`
 
 ### Installation
 
@@ -46,14 +47,17 @@ Other requirements included:
 
    ```bash
    git clone https://github.com/IsakGrimsson/Starship_project.git
+   ```
 
 
-
-### Implementation 
-
+### Usage
+Once the requirements have been installed, navigate to the base folder of this project and run main.py as follows:
+```py
+python main.py
+```
 
 # Testing Report:
-
+!()
 
 # Collaborators:
 
