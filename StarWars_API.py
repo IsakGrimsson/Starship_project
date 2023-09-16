@@ -1,19 +1,23 @@
 import requests
 
-#class to fetch data from API and return array of dictionaries
+
+# class to fetch data from API and return array of dictionaries
 class StarWarsAPI:
-    #fetch one specific page number
+    # fetch one specific page number
     def fetch_page(self, collection: str, page: int):
         page_request = requests.session().get(f"https://swapi.dev/api/{collection}/?page={page}")
         return page_request.json()["results"]
-    #fetch the first x number of pages
+
+    # fetch the first x number of pages
     def fetch_num_pages(self, collection: str, num_of_pages: int):
         all_pages = []
-        for page in list(range(1,num_of_pages+1)):
+        for page in list(range(1, num_of_pages + 1)):
             each_page = self.fetch_page(collection, page)
             all_pages.extend(each_page)
         return all_pages
-    #fetch all of the pages for specified collection
+
+    # fetch all of the pages for specified collection
+
     def fetch_all_pages(self, collection: str):
         all_pages = []
         page = 1

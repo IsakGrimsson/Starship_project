@@ -1,6 +1,7 @@
 import pymongo
 
-#class which interacts with MongoDB
+
+# class which interacts with MongoDB
 class MongoDBAPI:
     def __init__(self):
         self.default_server = "mongodb://localhost:27017/"
@@ -26,13 +27,14 @@ class MongoDBAPI:
                 field_to_update = []
                 # For each element in the field to replace
                 for element in document[field_to_replace]:
-                    #Search for a name in the other collection, and return it's replacement
-                    result = collection_to_retrieve.find({field_to_find:element}, {replacement_field:1})
+                    # Search for a name in the other collection, and return its replacement
+                    result = collection_to_retrieve.find({field_to_find: element}, {replacement_field: 1})
                     # Grab the replacement field (by default the ID)
                     for inner_element in result:
                         field_to_update.append(inner_element[replacement_field])
                 # Set the field to replace, with the replacement field
-                collection_to_replace.update_one({"_id": document["_id"]}, {"$set": {field_to_replace:field_to_update}})
+                collection_to_replace.update_one({"_id": document["_id"]},
+                                                 {"$set": {field_to_replace: field_to_update}})
 
     def create_collection(self, database_name, collection_name):
         return self.connect_to_mongo(database_name)[collection_name]
