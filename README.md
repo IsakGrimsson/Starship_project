@@ -23,8 +23,8 @@ Other requirements included:
 
 # Useful Links:
 
-[Trello Kanban Board](https://trello.com/b/0IGj6Zvj/starship-project)
-[SWAPI API](https://swapi.dev/)
+- [Trello Kanban Board](https://trello.com/b/0IGj6Zvj/starship-project)
+- [SWAPI API](https://swapi.dev/)
 
 ## Features
 
