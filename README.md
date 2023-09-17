@@ -59,6 +59,7 @@ This will then retrieve and transform the data as specified.
 
 # Testing Report:
 ![test suite image](/test_results_1.png)
+![mongo test suite image](/mongo_test_report.png)
 
 # Collaborators:
 
