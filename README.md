@@ -21,6 +21,7 @@ Other requirements included:
 
 
 
+
 # Useful Links:
 
 - [Trello Kanban Board](https://trello.com/b/0IGj6Zvj/starship-project)
@@ -35,6 +36,7 @@ Other requirements included:
 ## Getting Started
 
 ### Prerequisites
+
 
 - Python 3, using your preferred installation method
 - [A working MongoDB installation](https://www.mongodb.com/docs/manual/installation/)
