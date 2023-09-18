@@ -1,35 +1,48 @@
-import json
-import requests
-import pymongo
+from StarWars_API import StarWarsAPI
+from MongoDB_API import MongoDBAPI
+from transformations import Transformations
 
-client = pymongo.MongoClient()
-db = client['StarWars']
+sw = StarWarsAPI()
+mg = MongoDBAPI()
+tr = Transformations()
 
-starships = []
+# Fetch the data
+starships_data = sw.fetch_all_pages("starships")
 
-# Calling Api to gather all the starships
-for i in range(20):
-    link = "https://swapi.dev/api/starships/"+str(i)
-    my_json = requests.get(link).json()
-    if (my_json != {'detail': 'Not found'}):
-        starships.append(my_json)
+# Manipulate it by replacing the LINKS with NAMES
+new_starships_data = sw.replace_url(starships_data, 'pilots', 'name')
 
-# Format the starships array with the objectID instead of the API link
-for ship in starships:
-    pilots = []
-    # For each pilot on each ship
-    for pilot in ship["pilots"]:
-        # make a request to the API to grab their name
-        pilot_name = requests.get(pilot).json()["name"]
-        # Search the DB by name to find their ID and add them to the pilots array
-        pilot = db.characters.find({"name":pilot_name},{"_id":1})
-        for document in pilot:
-            pilots.append(document["_id"])
+# Perform transformations
+tr.clean_unknown(new_starships_data, 'consumables')
+tr.clean_unknown(new_starships_data, 'hyperdrive_rating')
+tr.clean_unknown(new_starships_data, 'cost_in_credits')
+tr.clean_unknown(new_starships_data, 'cargo_capacity')
+tr.clean_unknown(new_starships_data, 'MGLT')
+tr.clean_unknown(new_starships_data, 'passengers')
+tr.clean_unknown(new_starships_data, 'crew')
+tr.clean_unknown(new_starships_data, 'max_atmosphering_speed')
 
-    # Replace the "pilots" field (for each ship)
-    ship["pilots"] = pilots
+tr.clean_na(new_starships_data, 'max_atmosphering_speed')
+tr.clean_na(new_starships_data, 'passengers')
 
-# Adding into the database
-collection = db["Starships"]
-for ship in starships:
-    result = collection.insert_one(ship)
+tr.normalise_data(new_starships_data, 'name')
+tr.normalise_data(new_starships_data, 'model')
+tr.normalise_data(new_starships_data, 'manufacturer')
+tr.normalise_data(new_starships_data, 'starship_class')
+
+tr.transform_field_to_float(new_starships_data, 'length')
+tr.transform_field_to_float(new_starships_data, 'hyperdrive_rating')
+
+tr.transform_field_to_integer(new_starships_data, 'crew')
+tr.transform_field_to_integer(new_starships_data, 'cargo_capacity')
+tr.transform_field_to_integer(new_starships_data, 'passengers')
+tr.transform_field_to_integer(new_starships_data, 'cost_in_credits')
+tr.transform_field_to_integer(new_starships_data, 'max_atmosphering_speed')
+tr.transform_field_to_integer(new_starships_data, 'MGLT')
+
+# Insert into database
+collection = mg.create_collection('starwars', 'starships')
+mg.insert_lst_into_db(new_starships_data, collection)
+
+# Manipulate by replacing NAMES with ID
+mg.replace_field("starwars", 'starships', "pilots", "characters", "name")

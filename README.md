@@ -20,10 +20,12 @@ Other requirements included:
 ## Table of Contents
 
 
+
+
 # Useful Links:
 
-[Trello Kanban Board](https://trello.com/b/0IGj6Zvj/starship-project)
-[SWAPI API](https://swapi.dev/)
+- [Trello Kanban Board](https://trello.com/b/0IGj6Zvj/starship-project)
+- [SWAPI API](https://swapi.dev/)
 
 ## Features
 
@@ -35,9 +37,11 @@ Other requirements included:
 
 ### Prerequisites
 
-- Python 3
-- MongoDB installation
-- UnitTest
+
+- Python 3, using your preferred installation method
+- [A working MongoDB installation](https://www.mongodb.com/docs/manual/installation/)
+- UnitTest, which is part of the Python Standard Library
+- [pymongo](https://pymongo.readthedocs.io/en/stable/) - `pip install pymongo`
 
 ### Installation
 
@@ -45,14 +49,19 @@ Other requirements included:
 
    ```bash
    git clone https://github.com/IsakGrimsson/Starship_project.git
+   ```
+
+
+### Usage
+Once the requirements have been installed, navigate to the base folder of this project and run main.py as follows:
+```py
+python main.py
 ```
-
-
-### Implementation 
-
+This will then retrieve and transform the data as specified.
 
 # Testing Report:
-
+![test suite image](/test_results_1.png)
+![mongo test suite image](/mongo_test_report.png)
 
 # Collaborators:
 
