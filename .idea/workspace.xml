@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89e1043c-5e19-4536-91fd-ae6a5ad27824" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Modules/mongo_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_Modules/mongo_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot 2023-09-15 at 21.00.10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Results - Unittests_in_API_test_module_py.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Results - Unittests_in_API_test_module_py.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +45,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "jack-testing",
-    "last_opened_file_path": "/Users/sophie/Documents/GitHub/Starship_project",
+    "git-widget-placeholder": "Merging jack-testing",
+    "last_opened_file_path": "C:/Users/Jackm/Sparta/PyMongo",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
